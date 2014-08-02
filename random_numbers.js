@@ -12,7 +12,7 @@
 // Epands further on the first app. Now we introduce a deck of playinng cards.  
 
 var list = [];
-
+var trans =  [];
 var randomNum = function(){
 	list = [];
 	for (var i = 0; i < 100; i++){
@@ -31,17 +31,27 @@ var translateNumber = function(newlist){
 	var translatedList = [];
 	var translation = [ {1: 'A'}, {2 : 'B'}, {3 : 'C'}, {4 : 'D'}, {5 : 'E'},
 				   {6 : 'S'}, {7 : 'G'}, {8 : 'H'}, {9 : 'N'}, {0 : 'O'}];
-
-	console.log("Testing translation");
-
-	console.log(translation[6-1]);
+	
 	for (item in newlist){
-		console.log(newlist[item]);
-		translatedList.push([newlist[item]])
+		var firstDigit = Math.floor(item / 10);
+		var secondDigit = item % 10;
+
+		for (var key in translation[firstDigit-1]){
+			var firstLetter = translation[firstDigit-1][key];
+		}
+		for (var key in translation[secondDigit-1]){
+			var secondLetter = translation[secondDigit-1][key];
+		}
+
+		translatedList.push([item, firstLetter+secondLetter])
 	}
+
+	return translatedList;
 }
 
 
 
+
 randomNum();
-translateNumber(list);
+trans = translateNumber(list);
+console.log(trans);
